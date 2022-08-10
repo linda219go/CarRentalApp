@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-expand-lg" style="background-color: #f5983b;">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">1DER4</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/cars}">Our Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" >Policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contact}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/myaccount}">View Account</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="row" style="margin: 30px">
+    <div class="col-sm-4">
+        <div class="card">
+            <img class="card-img-top" src="images/racing_car1.jpg" alt="Car image">
+            <div class="card-body">
+                <h5 class="card-title">Car1</h5>
+                <p class="card-text"> Description Here</p>
+                <a href="#" class="btn btn-warning">Choose</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <img class="card-img-top" src="images/jeep1.jpg" alt="Car image">
+            <div class="card-body">
+                <h5 class="card-title">Car2</h5>
+                <p class="card-text">Description Here</p>
+                <a href="#" class="btn btn-warning">Choose</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <img class="card-img-top" src="images/yellow_van1.jpg" alt="Car image">
+            <div class="card-body">
+                <h5 class="card-title">Car3</h5>
+                <p class="card-text">Description Here</p>
+                <a href="#" class="btn btn-warning">Choose</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+<form th:action="@{/rentacar}" th:object="${car}" method="POST">
+ <div class="form-group">
+        <label for="make-selection">Select a make:</label>
+     <select th:field="*{make}" class="form-control" id="make-selection">
+         <option th:value="'Honda'" th:text="Honda"></option>
+         <option th:value="'Lexus'" th:text="Lexus"></option>
+         <option th:value="'Volvo'" th:text="Volvo"></option>
+         <option th:value="'Tesla'" th:text="Tesla"></option>
+
+     </select>
+     <br>
+     <label for="type-selection">Select a type:</label>
+     <select th:field="*{type}" class="form-control" id="type-selection">
+         <option th:value="'Sedan'" th:text="Sedan"></option>
+         <option th:value="'SUV'" th:text="SUV"></option>
+         <option th:value="'Van'" th:text="Van"></option>
+     </select>
+     <br>
+     <label for="year-selection">Select a year:</label>
+     <select th:field="*{year}" class="form-control" id="year-selection">
+         <option th:value="'2022'" th:text="2022"></option>
+         <option th:value="'2021'" th:text="2021"></option>
+         <option th:value="'2018'" th:text="2018"></option>
+         <option th:value="'2019'" th:text="2019"></option>
+     </select>
+     <br>
+     <label for="price-selection">Select a price range($/day):</label>
+     <select th:field="*{price}" class="form-control" id="price-selection">
+         <option th:value="'50'" th:text="50"></option>
+         <option th:value="'60'" th:text="60"></option>
+         <option th:value="'80'" th:text="80"></option>
+         <option th:value="'100'" th:text="100"></option>
+     </select>
+<!--     <label for="user-selection">Select a User:</label>-->
+<!--     <select th:field="*{user}" class="form-control" id="user-selection">-->
+<!--         <option th:text="${username}" th:value="${user.id}"/>-->
+<!--     </select>-->
+     <br>
+     <label for="numofdays-selection">How many days would you like to rent?</label>
+     <select th:field="*{numOfDays}" class="form-control" id="numofdays-selection">
+         <option th:value="'1'" th:text="1"></option>
+         <option th:value="'2'" th:text="2"></option>
+         <option th:value="'3'" th:text="3"></option>
+         <option th:value="'4'" th:text="4"></option>
+         <option th:value="'5'" th:text="5"></option>
+         <option th:value="'6'" th:text="6"></option>
+         <option th:value="'7'" th:text="7"></option>
+         <option th:value="'8'" th:text="8"></option>
+         <option th:value="'9'" th:text="9"></option>
+         <option th:value="'10'" th:text="10"></option>
+     </select>
+
+    </div>
+    <div class="col-auto" style="margin-top: 30px">
+        <button type="submit" class="btn btn-info col-2" data-toggle="modal" data-target="#rentacar">Submit</button>
+        <button type="reset" class="btn btn-secondary col-2">Cancel</button>
+    </div>
+</form>
+
+</div>
+
+</body>
+</html>
